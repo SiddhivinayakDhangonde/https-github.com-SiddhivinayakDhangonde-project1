@@ -1,0 +1,350 @@
+﻿@{
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CRM Admin Login</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .login-wrapper {
+            display: flex;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+            max-width: 900px;
+            width: 100%;
+        }
+
+        .login-left {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: white;
+            padding: 60px 40px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+            .login-left h2 {
+                font-size: 32px;
+                margin-bottom: 20px;
+            }
+
+            .login-left p {
+                font-size: 16px;
+                line-height: 1.6;
+                opacity: 0.9;
+            }
+
+        .features {
+            margin-top: 30px;
+        }
+
+        .feature-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .feature-icon {
+            width: 24px;
+            height: 24px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 12px;
+            font-size: 14px;
+        }
+
+        .login-right {
+            flex: 1;
+            padding: 60px 40px;
+        }
+
+        .logo {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .logo-text {
+            font-size: 28px;
+            font-weight: bold;
+            color: #1e3c72;
+        }
+
+        .logo-subtitle {
+            font-size: 12px;
+            color: #666;
+            margin-top: 5px;
+        }
+
+        .login-header h1 {
+            color: #333;
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        .login-header p {
+            color: #666;
+            font-size: 14px;
+            margin-bottom: 30px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            color: #333;
+            font-weight: 500;
+            margin-bottom: 8px;
+            font-size: 14px;
+        }
+
+        .input-wrapper {
+            position: relative;
+        }
+
+        input[type="text"],
+        input[type="password"] {
+            width: 100%;
+            padding: 12px 15px 12px 40px;
+            border: 2px solid #e1e1e1;
+            border-radius: 6px;
+            font-size: 14px;
+            transition: all 0.3s;
+        }
+
+            input[type="text"]:focus,
+            input[type="password"]:focus {
+                outline: none;
+                border-color: #2a5298;
+                box-shadow: 0 0 0 3px rgba(42, 82, 152, 0.1);
+            }
+
+        .input-icon {
+            position: absolute;
+            left: 12px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #999;
+            font-size: 18px;
+        }
+
+        .remember-forgot {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
+            font-size: 14px;
+        }
+
+        .remember-me {
+            display: flex;
+            align-items: center;
+            color: #666;
+        }
+
+            .remember-me input {
+                margin-right: 8px;
+            }
+
+        .forgot-password {
+            color: #2a5298;
+            text-decoration: none;
+        }
+
+            .forgot-password:hover {
+                text-decoration: underline;
+            }
+
+        .login-btn {
+            width: 100%;
+            padding: 14px;
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+            .login-btn:hover {
+                transform: translateY(-2px);
+                box-shadow: 0 5px 15px rgba(42, 82, 152, 0.3);
+            }
+
+            .login-btn:active {
+                transform: translateY(0);
+            }
+
+        .message {
+            margin-top: 15px;
+            padding: 12px;
+            border-radius: 6px;
+            text-align: center;
+            display: none;
+            font-size: 14px;
+        }
+
+            .message.error {
+                background-color: #fee;
+                color: #c33;
+                border: 1px solid #fcc;
+            }
+
+            .message.success {
+                background-color: #efe;
+                color: #2d7a2d;
+                border: 1px solid #cfc;
+            }
+
+    </style>
+</head>
+<body>
+    <div class="login-wrapper">
+        <div class="login-left">
+            <h2>Welcome to CRM Admin</h2>
+            <p>Manage your customer relationships, track sales, and grow your business with our comprehensive CRM solution.</p>
+
+            <div class="features">
+                <div class="feature-item">
+                    <div class="feature-icon">✓</div>
+                    <span>Customer Management</span>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">✓</div>
+                    <span>Sales Pipeline Tracking</span>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">✓</div>
+                    <span>Analytics & Reports</span>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">✓</div>
+                    <span>Team Collaboration</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="login-right">
+            <div class="logo">
+                <div class="logo-text">CRM Pro</div>
+                <div class="logo-subtitle">ADMIN PORTAL</div>
+            </div>
+
+            <div class="login-header">
+                <h1>Sign In</h1>
+                <p>Enter your credentials to access the admin dashboard</p>
+            </div>
+
+            <div class="form-group">
+                <label for="username">Username</label>
+                <div class="input-wrapper">
+                    <span class="input-icon">👤</span>
+                    <input type="text" id="username" placeholder="Enter your username" autocomplete="username">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="password">Password</label>
+                <div class="input-wrapper">
+                    <span class="input-icon">🔒</span>
+                    <input type="password" id="password" placeholder="Enter your password" autocomplete="current-password">
+                </div>
+            </div>
+
+            <div class="remember-forgot">
+                <label class="remember-me">
+                    <input type="checkbox" id="remember">
+                    Remember me
+                </label>
+                <a href="#" class="forgot-password" onclick="handleForgotPassword(event)">Forgot Password?</a>
+            </div>
+
+            <button class="login-btn" onclick="handleLogin()">Sign In</button>
+
+            <div class="message" id="message"></div>
+        </div>
+    </div>
+
+    <script>
+        function handleLogin() {
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            const remember = document.getElementById('remember').checked;
+            const messageEl = document.getElementById('message');
+
+            messageEl.style.display = 'none';
+
+            if (!username || !password) {
+                showMessage('Please enter both username and password', 'error');
+                return;
+            }
+
+            // Demo validation - In production, authenticate with your backend API
+            // Example: POST to /api/admin/login with credentials
+
+            showMessage('Connecting to server...', 'success');
+
+            // Simulate authentication delay
+            setTimeout(() => {
+                showMessage('Ready to integrate with your CRM backend API', 'success');
+                // On successful authentication, redirect to dashboard:
+                // window.location.href = '/admin/dashboard';
+            }, 1000);
+        }
+
+        function handleForgotPassword(e) {
+            e.preventDefault();
+            showMessage('Password reset functionality - connect to your backend', 'success');
+            // Redirect to password reset page:
+            // window.location.href = '/admin/forgot-password';
+        }
+
+        function showMessage(text, type) {
+            const messageEl = document.getElementById('message');
+            messageEl.textContent = text;
+            messageEl.className = 'message ' + type;
+            messageEl.style.display = 'block';
+        }
+
+        // Allow login with Enter key
+        document.getElementById('password').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                handleLogin();
+            }
+        });
+
+        document.getElementById('username').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                handleLogin();
+            }
+        });
+    </script>
+</body>
+</html>
+
